@@ -46,7 +46,6 @@ const travelList = (req, res) => {
             if (err) {
                 console.error(err);
             }
-            console.log('statusCode: ', response && response.statusCode)
             renderTravelList(req, res, body);
         }
     )

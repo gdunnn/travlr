@@ -1,6 +1,5 @@
-impot { Component, OnInit } from  '@angular/core';
+import { Component, OnInit } from  '@angular/core';
 
-import { Component, OnInit } from "@angular/core";
 import { ComponentFactoryBoundToModule } from "@angular/core/src/linker/component_factory_resolver";
 import { AuthenticationService } from "../services/authentication";
 

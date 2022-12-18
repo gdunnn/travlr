@@ -1,0 +1,25 @@
+impot { Component, OnInit } from  '@angular/core';
+
+import { Component, OnInit } from "@angular/core";
+import { ComponentFactoryBoundToModule } from "@angular/core/src/linker/component_factory_resolver";
+import { AuthenticationService } from "../services/authentication";
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+
+export class HomeComponent implements OnInit {
+
+  constructor(
+    private authService: AuthenticationService
+  ) { }
+
+  ngOnInit() {
+  }
+
+  public isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+}

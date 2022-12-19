@@ -3,23 +3,20 @@ const apiOptions = {
     server: 'http://localhost:3000'
 }
 
-/* render travel list view */
+/* Render travel list view */ 
 const renderTravelList = (req, res, responseBody) => {
     let message = null;
     let pageTitle = process.env.npm_package_description + ' - Travel';
 
-    // if the result was not an array, make it an array and report error
     if (!(responseBody instanceof Array)) {
         message = 'API lookup error';
         responseBody = [];
-    }
-    else {
+    } else {
         if (!responseBody.length) {
-            message = 'No trips exist in database';
+            message = 'No trips exist in database!';
         }
     }
 
-    // render the page
     res.render('travel', {
         title: pageTitle,
         trips: responseBody,
@@ -30,7 +27,6 @@ const renderTravelList = (req, res, responseBody) => {
 /* GET travel list view */
 const travelList = (req, res) => {
     const path = '/api/trips';
-    // construct the request
     const requestOptions = {
         url: `${apiOptions.server}${path}`,
         method: 'GET',
@@ -39,7 +35,6 @@ const travelList = (req, res) => {
 
     console.info('>> travelController.travelList calling ' + requestOptions.url);
 
-    // send the request to the api and get a response. Use the response to render the travel page
     request(
         requestOptions,
         (err, { statusCode }, body) => {
@@ -49,8 +44,8 @@ const travelList = (req, res) => {
             renderTravelList(req, res, body);
         }
     )
-};
+}
 
 module.exports = {
     travelList
-}
+};
